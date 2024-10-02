@@ -4,7 +4,7 @@ function App() {
   
   return (
     <div className={`App`}>
-        <input type='text1' />
+        <input type='text2' />
         <h2>Second change </h2>
         <h3>Thirth change</h3>
         <h4>zobair zobair</h4>
