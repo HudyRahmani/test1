@@ -1,17 +1,22 @@
  
+import { useState } from 'react';
 import './App.css'
+
 function App() {
-  
+  const[courseList, setCourseList] = useState([])
+  const[course, setCourse] = useState('')
+
   return (
     <div className={`App`}>
-        <input type='text2' />
-        <h2>Second change </h2>
-        <h3>Thirth change</h3>
-        <h4>zobair zobair</h4>
-        <h5>This Text Add to Temp Branch</h5>
-        <h6>HRweb coding styleing </h6>
+      <form >
+        <input 
+          type='text' 
+          onChange={(e) => setCourse()}
+        />
+        <button>Add New</button>
+      </form>
     </div>
-  );
-}
+  ); 
 
+}
 export default App;
