@@ -1,49 +1,26 @@
- 
-import { useState } from 'react';
+ import { useEffect, useState } from 'react';
 import './App.css'
-import CourseList from './CourseList';
+import Hudy from './components/Hudy';
+import axios from 'axios';
+
 
 function App() {
-  const[courseList, setCourseList] = useState([])
-  const[course, setCourse] = useState('')
-  const[isUpload, setIsUpload] = useState(false)
+  
+  const[data,setData] = useState('')
 
-  const newData = {
-    course:course,
-    id: Math.floor(Math.random() * 100 ),
-    isUpload : false
-  }
-  const handleSubmit = (e) =>{
-    e.preventDefault();
-    
-    setCourseList((preveData) =>{
-      return [...preveData , newData]
+  const handleClick = (excuses) =>{
+    axios.get(`https://excuser-three.vercel.app/v1/excuse/${excuses}/`).then((res) =>{
+      setData(res.data[0].excuse)
     })
-    setCourse('')
   }
-
-  const handleDelete = (newid) =>{
-    setCourseList(courseList.filter(({id}) => {
-      return newid !== id
-    }))
-  }
-
-  const handleUpload = () =>{
-      setIsUpload(true)
-      
-  }
+  
 
   return (
     <div className={`App`}>
-      <form onSubmit={handleSubmit}>
-        <input 
-          type='text' 
-          onChange={(e) => setCourse(e.target.value)}
-          value={course}
-          />
-        <button>Add New</button>
-      </form>
-      <CourseList  setIsUpload={setIsUpload}  handleUpload = {handleUpload} courseList= {courseList}  handleDelete ={handleDelete}/>
+        <button onClick={() => handleClick('family')}>Excuse Family </button>
+        <button onClick={() => handleClick('party')}>Excuse party </button>
+        <button onClick={() => handleClick('office')}>Excuse office </button>
+        <p>{data}</p>
     </div>
   ); 
 
