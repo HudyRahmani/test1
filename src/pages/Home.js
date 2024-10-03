@@ -1,7 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { ProvideContext } from './Context'
 
-export default function Home() {
+
+export default function Home(props) {
+    const {name:username} = useContext(ProvideContext)
   return (
-    <div>Home</div>
+    <>
+        <div>Home</div>
+        <p>{username}</p>
+    </>
   )
 }
