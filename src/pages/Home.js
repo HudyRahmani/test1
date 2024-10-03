@@ -1,13 +1,23 @@
-import React, { useContext } from 'react'
-import { ProvideContext } from './Context'
+import axios from 'axios'
+import { useQuery } from 'react-query'
 
+export default function Home() {
+     const {data , isLoading , isError ,refetch} = useQuery(["cat"], ()=>{
+        return axios.get('https://catfact.ninja/fact/').then((res)=> res.data)
+     })
 
-export default function Home(props) {
-    const {name:username} = useContext(ProvideContext)
+     if(isLoading){
+       return <h2>Loading...</h2>
+      }
+     if(isError){
+      return <h2>sory where was an error</h2>
+     }
   return (
     <>
-        <div>Home</div>
-        <p>{username}</p>
+        <div>
+          <button onClick={refetch}>Refetch</button>
+          <h1>{data?.fact}</h1>
+        </div>
     </>
   )
 }
