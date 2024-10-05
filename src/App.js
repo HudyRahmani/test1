@@ -1,19 +1,14 @@
 import './App.css'
-import { useToggle } from './pages/useToggle';
+import Downbox1 from './components/downBox/Downbox1';
+
+
 function App() {
 
-  const [isvisible , toggle] = useToggle()
+
   return (
     <div className={`App`}>
-      
-       <button onClick={toggle}>
-        {toggle ? "hide" :"show"}
-       </button>
-
-       {isvisible &&
-       <p>this is some text for test click on button to hide</p>
-      }
-
+        <div>Home</div>
+        <Downbox1 />
     </div>
   ); 
 
