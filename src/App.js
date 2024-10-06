@@ -5,7 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 function App() {
   const schema =  yup.object().shape({
-      name : yup.string().required('بدبخت مرضی نام ضروری است نام خود را بنویس وی'),
+      name : yup.string().required('نام ضروری است نام خود را وارد کنید'),
       email : yup.string().required('ایمل نا معتبر است').email(),
       age : yup.number('سن باید عدد باشد').positive('باید سن درست را وارد کنید').min(18,'سن شما کم است').max(100,'سن زیاد قبول نمیکند').required('چند ساله هستیدید؟'),
       password : yup.string().min(4,'کمتر از 4 نباشد').max(15, 'بیشتر از 15 نباشد').required('پسورد ضروری است'),
